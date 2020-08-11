@@ -1,0 +1,57 @@
+<div class="form-group">
+    <c8y-form-group>
+      <div style="display: flex;">
+        <div class="form-group" style="flex-grow:1 ; margin-right: 5px;">
+          <label translate>Group by</label>
+          <input class="form-control" type="text" name="config.groupby" [(ngModel)]="config.groupby"/>
+        </div>
+        <div class="form-group" style="flex-grow:1 ; margin-right: 5px;" *ngIf="config.groupby == 'versionIssuesName'">
+          <label translate>Type</label>
+          <input class="form-control" type="text" name="config.inventoryType" [(ngModel)]="config.inventoryType"/>
+        </div>
+      </div>
+      <div class="form-group" style="flex-grow:1 ; margin-right: 5px;">
+        <label translate>Value</label>
+        <input class="form-control" type="text" name="config.value" [(ngModel)]="config.value"/>
+      </div>
+      <div class="form-group">
+        <label translate>Chart Type</label>
+        <select class="browser-default custom-select" style="width: 45%" name="config.type" [(ngModel)]="config.type">
+          <option selected>Open this select menu</option>
+          <option value="bar">Vertical Bar Chart</option>
+          <option value="horizontalBar">Horizontal Bar Chart</option>
+          <option value="pie">Pie Chart</option>
+          <option value="doughnut">Doughnut Chart</option>
+          <option value="line">Line Chart</option>
+          <option value="radar">Radar Chart</option>
+          <option value="polarArea">Polar Area Chart</option>
+          <option value="scatter">Scatter Chart</option>
+          <option value="bubble">Bubble Chart</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label translate>Legend</label>
+        <select class="browser-default custom-values" style="width: 45%" name="config.legend" [(ngModel)]="config.legend">
+          <option selected value="top">Top</option>
+          <option value="left">Left</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <mat-slide-toggle class="example-margin" [(ngModel)]="config.innerChild">Include child devices</mat-slide-toggle>
+      </div>
+      <div style="display: flex;">
+        <div style="flex-grow:1 ; margin-right: 5px;">
+          <label translate>Chart Color</label>
+          <input type="text" id="colorInput"  name="config.color" style="width:100%" [(ngModel)]="config.color" (click)= "openColorPicker()" placeholder="Color code i.e #0899CC or leave blank for default colors">
+          <app-color-picker [ngClass]="isOpenCP? 'colorPickerModal': 'hideColorPicker'" (closeColorPicker)="closeColorPicker()" (colorSet) ="setSelectedColor($event)" ></app-color-picker>
+        </div>
+        <div style="flex-grow:1;margin-left: 5px;">
+          <label translate>Border Color</label>
+          <input type="text" id="colorInputBorder"  name="config.borderColor" style="width:100%" [(ngModel)]="config.borderColor" (click)= "openBorderColorPicker()" placeholder="Choose border color">
+          <app-color-picker [ngClass]="borderCP? 'colorPickerModal': 'hideColorPicker'" (closeColorPicker)="closeBorderColorPicker()" (colorSet) ="setSelectedBorderColor($event)" ></app-color-picker>
+        </div>
+      </div>
+      <br>
+      
+    </c8y-form-group>
+  </div>

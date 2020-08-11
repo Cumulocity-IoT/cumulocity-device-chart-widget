@@ -1,0 +1,38 @@
+:host {
+    display: block;
+    width: 316px;
+    padding: 16px;
+  }
+  .color-wrapper {
+    display: flex;
+    height: 150px;
+    
+  }
+  
+  .input-wrapper {
+    margin-top: 16px; 
+    display: flex;
+    border-radius: 1px;
+    border: 1px solid rgb(220, 220, 220);
+    padding: 8px;
+    height: 32px;
+    justify-content: center;
+  }
+  
+  .color-div {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid rgb(220, 220, 220);
+  }
+  
+  .text {
+    flex: 1;
+    font-family: 'Helvetica';
+    line-height: 32px;
+  }
+  .colorPickerFooter{
+    padding: 14px;
+    text-align: center;
+    box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.05);
+}

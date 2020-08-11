@@ -1,0 +1,22 @@
+
+<div style="height: 40px;">
+	<div style ="float: right; margin-right: 10px;">
+	  <button type="button" class="btn btn-link c8y-realtime" title="Toggle realtime" (click)="toggle()" >
+		<span [ngClass]="realtimeState?'c8y-pulse active' : 'c8y-pulse inactive'" ></span>
+		<span >Realtime</span>
+	  </button>
+	  <button mat-icon-button style="margin-right: 10px;color:#1776BF;" type="button" class="button" (click)="reloadData()"><span class="fa fa-refresh"></span></button>
+	  </div>
+  </div>
+<div *ngIf="dataLoaded | async"> 
+	<div style="display: block">
+	  <canvas baseChart
+		  [datasets]="barChartData"
+		  [labels]="barChartLabels"
+		  [colors]="barChartColors"
+		  [options]="barChartOptions"
+		  [chartType]="barChartType">
+	  </canvas>
+	</div>
+  </div>
+  

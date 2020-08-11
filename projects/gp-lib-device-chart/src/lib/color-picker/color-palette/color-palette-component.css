@@ -1,0 +1,9 @@
+.color-palette:hover {
+    cursor: pointer;
+  }
+  
+  :host {
+    width: 150px;
+    height: 150px;
+    display: block;
+  }
