@@ -33,7 +33,7 @@ The Device chart can be used to display Alarm Chart and Firmware Chart.
 
 ## Usecase
 
-img
+![image](https://user-images.githubusercontent.com/67993842/90007117-c4f8ff80-dcb7-11ea-8a5d-79ca3a695c49.png)
 
 ## Features
 
