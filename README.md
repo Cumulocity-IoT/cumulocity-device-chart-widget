@@ -31,62 +31,35 @@ The Device chart can be used to display Alarm Chart and Firmware Chart.
 
 * Bubble Chart (Data set not ideal for this chart)
 
+## Usecase
 
-## Prerequisites
+img
 
-##### Nodejs and npm package Installation
+## Features
 
-  -  Go through the following link to Install Nodejs and npm package
+*  **Support single device and group devices:** Based on configuration during widget configuration.
+*  **Supports Alarm Chart:** It displays the Alarm chart if group by is set to c8y_ActiveAlarmsStatus in configuration.
+*  **Supports Firmware Chart:** It displays the Firmware chart if group by is set to versionIssuesName in configuration.
+*  **Fetch Inner child Devices:** Fetches Inventory data for chid devices only if Fetch innerchild devices is checked in configuration.
+*  **Support multiple charts:** Based on group by field and chart type in configuration.
 
-     [Nodejs and npm package Installtion](https://treehouse.github.io/installation-guides/windows/node-windows.html)
+## Installation
+  
+**Supported Cumulocity Environments:**
+  
+*  **App Builder:** Tested with Cumulocity App Builder version 1.2.1.
+  
+*  **Cockpit Application:** Tested with Cockpit 1006.3.0 with [Patch Fix](https://www.npmjs.com/package/cumulocity-runtime-widget-loader).
 
-##### Angular version 
-
-  - Angular CLI version 8.3.8 (Angular 8).
-
-##### Mandatory Library for Widget
-
-  - Angular CDK version 8.2.3
-
-    Installation command:  ```npm i @angular/cdk@8.2.3 ``` 
-
-  - Angular Material version 8.2.3
-
-     Installation command: ```npm i @angular/material@8.2.3 ``` 
-
-  - Ng2-charts version 2.3.2
-
-    Installation command:  ```npm install ng2-charts@2.3.2 --save``` 
-
-  - Chart.js version 2.9.3
-
-      Installation command :  ```npm i chart.js@2.9.3 ``` 
-
-  - Cumulocity Library: 
-
-      Installation command : 
-
- ```cmd
-
-npm install @c8y/client
-
-npm install @c8y/ngx-components 
-
-npm install @c8y/style
-
-npm install @c8y/ng1-modules
-
-``` 
-
-**Note: This widget can be used as a custom widget in both cockpit and cumulocity-app-builder application**
-
- ## Device Chart as a custom widget for Cockpit Application 
-
-  1. Use your existing cockpit application or please refer  [Cumulocity  Guide](https://cumulocity.com/guides/web/how-to/#add-a-custom-widget) to create a new cockpit application.
-
-  2. Make sure to install all pre-specified Mandatory Library under [Prerequisites](https://labcase.softwareag.com/projects/gp-device-chart/wiki/Wiki#Prerequisites) in your cockpit application.
-
-    So that your application has the following entries in `package.json `.
+**Prerequisites:**
+  
+* Git
+  
+* NodeJS (release builds are currently built with `v10.19.0`)
+  
+* NPM (Included with NodeJS)
+  
+**External dependencies:**
 
 ```
 
@@ -108,58 +81,45 @@ npm install @c8y/ng1-modules
 
 ```
 
-**Note: Even if some of the libraries are available please do install, that will only update the library which is already available with latest changes and also update its dependencies.
+**Installation Steps For App Builder:**
 
-**
+**Note:** If you are new to App Builder or not yet downloaded/clone app builder code then please follow [App builder documentation(Build Instructions)](https://github.com/SoftwareAG/cumulocity-app-builder) before proceeding further.
 
-### Installation
+1. Open Your existing App Builder project and install external dependencies by executing below command or install it manually.
+  - Angular fontawesome version 4.7.2
 
-1.  Download the Widget source code from the Repository within this project.
+    Installation command:  ```npm i @angular/cdk@8.2.3 ``` 
 
-2.  Create a Minorbuild binary file from the source code.
+  - Angular Material version 8.2.3
 
-      
-       Follow the below-specified command to create a Minorbuild binary file
+     Installation command: ```npm i @angular/material@8.2.3 ``` 
 
-      i) run npm i command to install all library files specified in source code
+  - Ng2-charts version 2.3.2
 
-      ```npm i ``` 
+    Installation command:  ```npm install ng2-charts@2.3.2 --save``` 
 
-      ii) run npm run buildMinor command to create a binary file under dist folder
+  - Chart.js version 2.9.3
 
-     ```npm run buildMinor ``` 
+      Installation command :  ```npm i chart.js@2.9.3 ``` 
 
-      iii) Copy the binary file **"gp-lib-device-chart-0.x.x.tgz** the latest one from the dist folder and Place the binary file under any folder.
+2. Grab the Device Chart **[Latest Release Binary](https://labcase.softwareag.com/projects/gp-device-chart/repository/revisions/master/show/releases)**
 
-3. This could be used in conjunction with the application builder/cockpit.
+3. Install the Binary file in app builder.
 
-### Deployment Of Device Chart In Cockpit Application
+```
+npm i <binary  file  path>/gp-lib-device-chart-1.0.0.tgz
+```
 
-##### 1. Install the binary file in cockpit application
+4. Open index.less located at /cumulocity-app-builder/ui-assets/
 
-To Install the binary file in cockpit application run the following command in cockpit application
+5. Update index.less file with below theme. Import at first line in file/begining of file(Please ignore this step if it already exist).
 
-```npm i <binary file path> ``` 
-
-Example:
-
-```cmd 
-
-npm i C:\Users\KHKH\Documents\GlobalPresales\RACM-Demo\c8y-app-builer3\c8y-app-builder\commonLibrary\gp-lib-device-chart-0.81.0.tgz
-
- ``` 
-
-After installation see that your cockpit application has following entry in `package.json `.
-
-```cmd 
-
-"gp-lib-device-chart": "file:../commonLibrary/"gp-lib-device-chart-0.81.0.tgz",
-
- ``` 
-
-##### 2. Import device Chart Module
-
-Import GpLibDeviceChartModule in app.module.ts and also place the imported Module under `@NgModule`.
+```
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import '~@c8y/style/main.less';
+@import '~@c8y/style/extend.less';
+```
+6. Import GpLibDeviceChartModule in app.module.ts and also place the imported Module under `@NgModule`.
 
 ```
 
@@ -177,306 +137,135 @@ import { GpLibDeviceChartModule } from 'gp-lib-device-chart';
 
 ```
 
-##### 3. Add Custom Branding
-
- - Install the base styles from npm with ```npm install @c8y/style  ``` (please ignore if done as a Prerequisites)
-
- - Create a LESS file called for instance `branding. less `.
-
- - Save it inside a new folder, which can have any name you like.
-
- - In `branding.less ` import following design templates.
-
+7.  Congratulation! Installation is now completed. Now you can run app builder locally or build and deploy it into your tenant.
+  
+```
+//Start App Builder
+npm run start
+// Build App
+npm run build
+// Deploy App
+npm run deploy
 ```
 
-@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+**Installation Steps For Cockpit:**
 
-@import '~font-awesome/less/font-awesome.less';
+**Note:** If you are new to Cockpit or not yet created any cockpit application then please follow [Web SDK for Angular](https://cumulocity.com/guides/web/angular/) before proceeding further.
 
-@import '~@c8y/style/main.less';
+1. Open Your existing Cockpit/Cumulocity project and install external dependencies by executing below command or install it manually.
 
-@import '~@c8y/style/extend.less';
+  - Angular fontawesome version 4.7.2
 
-```
+    Installation command:  ```npm i @angular/cdk@8.2.3 ``` 
 
-- In your application  `package.json ` ->  `c8y` add `brandingEntry`.
+  - Angular Material version 8.2.3
 
-`package.json ` ->  `c8y` Snippet
+     Installation command: ```npm i @angular/material@8.2.3 ``` 
 
-```
+  - Ng2-charts version 2.3.2
 
-"c8y": {
+    Installation command:  ```npm install ng2-charts@2.3.2 --save``` 
 
-    "application": {
+  - Chart.js version 2.9.3
 
-      "name": "custom-cockpit",
+      Installation command :  ```npm i chart.js@2.9.3 ``` 
 
-      "contextPath": "custom-cockpit",
+2. Grab the Device Chart **[Latest Release Binary](https://labcase.softwareag.com/projects/gp-device-chart/repository/revisions/master/show/releases)**
 
-      "key": "custom-cockpit-application-key",
-
-      "brandingEntry": "./branding/branding.less",
-
-      "tabsHorizontal": true,
-
-      "upgrade": true,
-
-      "rightDrawer": true,
-
-      "sensorAppOneLink": "http://onelink.to/pca6qe",
-
-      "contentSecurityPolicy": "base-uri 'none'; default-src 'self' 'unsafe-inline' http: https: ws: wss:; connect-src 'self' *.billwerk.com http: https: ws: wss:;  script-src 'self' open.mapquestapi.com *.twitter.com *.twimg.com 'unsafe-inline' 'unsafe-eval' data:; style-src * 'unsafe-inline' blob:; img-src * data:; font-src * data:; frame-src *;"
-
-    },
-
-    "cli": {}
-
-  }
+3. Install the Binary file in app builder.
 
 ```
-
-##### 4. Development server
-
-1. Using `c8ycli`
-
-Run `c8ycli server -u <hhtp://cumulocity_tenant>` for a dev server. Navigate to `http://localhost:9000/apps/<cockpit application name>/`. The app will automatically reload if you change any of the source files.
-
-2. Using `package.json Scripts`
-
-Update package.json start script 
-
+npm i <binary  file  path>/gp-lib-device-chart-1.0.0.tgz
 ```
 
-"scripts": {
+**Note:** If you don't find branding folder then please follow [Cumulocity Branding](https://cumulocity.com/guides/web/angular/#branding)
 
-  "start": "c8ycli server  -u <http://cumulocity_tenant>",
+4. Open branding.less located at /cumulocity-app/branding/
 
-  },
+5. In `branding.less ` import following design templates. Import at first line/begining of file(Please ignore this step if it already exist).
 
+  ```
+
+  @import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+  @import '~font-awesome/less/font-awesome.less';
+
+  @import '~@c8y/style/main.less';
+
+  @import '~@c8y/style/extend.less';
+  ```
+6. Import GpLibDeviceChartModule in app.module.ts and also place the imported Module under `@NgModule`.
+
+  ```
+
+  import { GpLibDeviceChartModule } from 'gp-lib-device-chart';
+
+  @NgModule({
+
+    imports: [
+
+      GpLibDeviceChartModule    
+
+        ]
+
+    })
+
+  ```
+
+7.  Congratulation! Installation is now completed. Now you can run your app locally or build and deploy it into your tenant.
+  
+```
+//Start App Builder
+npm run start
+// Build App
+npm run build
+// Deploy App
+npm run deploy
 ```
 
-Run `npm run start ` for a dev server. Navigate to `http://localhost:9000/apps/<cockpit application name>/`. The app will automatically reload if you change any of the source files.
+## Build Instructions
+  
+**Note:** It is only necessary to follow these instructions if you are modifying/extending this widget, otherwise see the [Installation Guide](#Installation).
+  
+**Prerequisites:**
+  
+* Git
+  
+* NodeJS (release builds are currently built with `v10.19.0`)
+  
+* NPM (Included with NodeJS)
 
-##### 5. Build
+**Instructions**
 
-1. Using `c8ycli`
-
-Run `c8ycli build` 
-
-2. Using `package.json Scripts`
-
-Update package.json start script 
-
+1. Clone the repository:
 ```
-
-"scripts": {
-
-  "build": "c8ycli build",
-
-  },
-
+git clone git@labcase.softwareag.com:labcase/gp-device-chart.git
 ```
+2. Change directory:
 
-Run `npm run build ` 
+  ```cd gp-device-chart```
 
-##### 6. Deploy widget to the cockpit
+3. run npm i command to install all library files specified in source code
 
-1. Using `c8ycli`
+  ```npm i ``` 
 
-Run `c8ycli deploy -u <http://cumulocity_tenant>` 
+4. run npm run buildMinor command to create a binary file under dist folder
 
-2. Using `package.json Scripts`
+  ```npm run buildMinor ``` 
 
-Update package.json start script 
+5. (Optional) Local development server:
+  
+  ```npm start```
 
-```
+6. Build the app:
 
-"scripts": {
+  ```npm run build```
 
-  "deploy": "c8ycli deploy -u <http://cumulocity_tenant>",
+7. Deploy the app:
+  ```npm run deploy```
 
-  },
-
-```
-
-Run `npm run deploy ` and provide specific cumulocity tenant URL and basic login credentials.
-
-On successful deployment In cumulocity, you can find your cockpit application under Application switcher.
-
-![](app_switcher.PNG)
-
-## Device Chart  as a custom widget for cumulocity-app-builder Application 
-
-  1. Use your existing cumulocity-app-builder application or please refer/clone the cumulocity-app-builder from GitHub [Cumulocity  App Builder](https://github.com/SoftwareAG/cumulocity-app-builder) to create a new application.
-
-  2. Make sure to navigate to ` cd <App builder path>.\cumulocity-app-builder\` folder install all pre-specified Mandatory Library under [Prerequisites](https://labcase.softwareag.com/projects/gp-device-chart/wiki/Wiki#Prerequisites) in your App Builder.
-
-    So that your application has the following entries in `package.json `.
-
-```
-
-"@angular/cdk": "8.2.3",
-
-"@angular/material": "8.2.3",
-
-"chart.js": "^2.9.3",
-
-"core-js": "^2.6.2",
-
-"ng2-charts": "^2.3.2",
-
-"@c8y/ngx-components": "^1006.3.0",
-
-"@c8y/ng1-modules": "^1006.3.0",
-
-"@c8y/style": "^1006.3.0",
-
- ```
-
-**Note: Even if some of the libraries are available please do install, that will only update the library which is already available with latest changes and also update its dependencies.
-
-**
-
-### Installation
-
-1.  Download the Widget source code from the Repository within this project.
-
-2.  Create a Minorbuild binary file from the source code.
-
-    - Follow the below-specified command to create a Minorbuild binary file
-
-      i) run npm i command to install all library files specified in source code
-
-      ```npm i ``` 
-
-      ii) run npm run buildMinor command to create a binary file under dist folder
-
-     ```npm run buildMinor ``` 
-
-      iii) Copy the binary file **gp-lib-device-chart-0.X.X.tgz** the latest one from the dist folder and Place the binary file under any folder.
-
-3. This could be used in conjunction with the application builder/cockpit.
-
-### Deployment Of Devive Chart In App Builder
-
-##### 1. Install the binary file in App Builder
-
-To Install the binary file in App Builder, run the following command.
-
-```npm i <binary file path> ``` 
-
-Example:
-
-```cmd 
-
-npm i  C:\Users\KHKH\Documents\GlobalPresales\RACM-Demo\c8y-app-builer3\c8y-app-builder\commonLibrary\gp-lib-device-chart-0.81.0.tgz
- ``` 
-
-After installation see that your App Builder  has following entry in `package.json `.
-
-```cmd 
-
-"gp-lib-device-chart": "file:.file:../commonLibrary/gp-lib-device-chart-0.81.0.tgz",
-
- ``` 
-
-##### 2. Import Device Chart Module
-
-Import GpLibDeviceChartModule in cumulocity-app-builder\custom-widgets\custom-widgets.module.ts  and also place the imported Module under `@NgModule`.
-
-```
-
-import { GpLibDeviceChartModule } from 'gp-lib-device-chart';
-
-@NgModule({
-
-  imports: [
-
-    GpLibDeviceChartModule
-
-      ]
-
-  })
-
-```
-
-##### 2. Add Custom Branding templates
-
- - Install the base styles from npm with ```npm install @c8y/style  ``` (please ignore if done as a Prerequisites)
-
- - In App Builder application navigate to `cumulocity-app-builder\ui-assets\index.less `
-
- - In `index.less ` import following design templates.
-
-```
-
-@import '~@angular/material/prebuilt-themes/indigo-pink.css';
-
-@import '~font-awesome/less/font-awesome.less';
-
-@import '~@c8y/style/main.less';
-
-@import '~@c8y/style/extend.less';
-
-```
-
-##### 3. Development server
-
-1. Using `package.json Scripts`
-
-run ``` npm i ```
-
-Update package.json start script 
-
-```
-
-"scripts": {
-
-  "start": "c8ycli server --env.extraWebpackConfig=./extra-webpack.config.js  -u <http://cumulocity_tenant>",
-
-  },
-
-```
-
-Run `npm run start ` for a dev server. Navigate to `http://localhost:9000/apps/app-builder/`. The app will automatically reload if you change any of the source files.
-
-##### 4. Build
-
-1. Using `package.json Scripts`
-
-Update package.json start script 
-
-```
-
-"scripts": {
-
-  "build": "c8ycli build --env.extraWebpackConfig=./extra-webpack.config.js",
-
-  },
-
-```
-
-Run `npm run build ` 
-
-##### 5. Deploy widget to the cockpit
-
-1. Using `package.json Scripts`
-
-Update package.json start script 
-
-```
-
-"scripts": {
-
-  "deploy": "c8ycli build --env.extraWebpackConfig=./extra-webpack.config.js -u <http://cumulocity_tenant>",
-
-  },
-
-``` 
-
-Run `npm run deploy ` and provide the cumulocity tenant URL and basic login credentials
-
-On the successful deployment of the widget, login to cumulocity tenant URL and basic login credentials
+## QuickStart
+This guide will teach you how to add widget in your existing or new dashboard.
 
 1. Open the Application Builder from the app switcher (Next to your username in the top right)
 
@@ -496,5 +285,42 @@ On the successful deployment of the widget, login to cumulocity tenant URL and b
 
 
 
+Congratulations! Device Chart is configured.
+  
+## User Guide
+
+1. Target Assets/Devices - deviceid/groupid of interest
+2.  Group By- Managed Object parameter name on which you want to group by
+3. Value(Optional) -parameter name whose value want to add and display 
+4. Chart Type - type of chart that you want to display.
+5. Legend - position of legend you want
+6. You can toggle the slider if you want the results for child devices also
+
+This chart can be used to Display Alarm Chart and Firmware Chart
+- To display Alarm Chart set Group By to c8y_ActiveAlarmsStatus
+- To display Firmware Chart set Group By to versionIssuesName
+                
+One can also select the custom chart color and Border color to beautify the chart, if not default colors will be picked.
+
+## Troubleshooting
+
+### Report a bug
+
+Create a new issue in the [Issues](https://labcase.softwareag.com/projects/gp-device-chart/issues) section of this Labcase project and assign it to *Owner Full Name*. Set the tracker to `Bug` and provide a meaningful title. Make sure to describe the bug as detailed as possible and how the bug can be reproduced.
+
+### Request a feature
+
+Create a new issue in the [Issues](https://labcase.softwareag.com/projects/gp-device-chart/issues) section of this Labcase project and assign it to *Owner Full Name*. Set the tracker to `Requirement` and provide a meaningful title. Shortly describe the feature.
 
 
+------------------------------
+  
+  
+This widget is provided as-is and without warranty or support. They do not constitute part of the Software AG product suite. Users are free to use, fork and modify them, subject to the license agreement. While Software AG welcomes contributions, we cannot guarantee to include every contribution in the master project.
+  
+_____________________
+  
+For more information you can Ask a Question in the [TECHcommunity Forums](http://tech.forums.softwareag.com/techjforum/forums/list.page?product=cumulocity).
+  
+  
+You can find additional information in the [Software AG TECHcommunity](http://techcommunity.softwareag.com/home/-/product/name/cumulocity).
