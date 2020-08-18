@@ -5,7 +5,7 @@
 This is an Angular 8 widget, which is designed to display the chart based on the device specific inventory data.
 
 
-To deliver the functional expected one need to set/select the following configuration parameters:
+To deliver the expected functionality one need to set/select the following configuration parameters:
  1. Group by(required), 
  2. Value(Optional)
  3. Legend (select - Top/Left)
@@ -30,10 +30,6 @@ The Device chart can be used to display Alarm Chart and Firmware Chart.
 * Scatter Chart (Data set not ideal for this chart)
 
 * Bubble Chart (Data set not ideal for this chart)
-
-## Usecase
-
-![image](https://user-images.githubusercontent.com/67993842/90007117-c4f8ff80-dcb7-11ea-8a5d-79ca3a695c49.png)
 
 ## Features
 
@@ -88,7 +84,7 @@ The Device chart can be used to display Alarm Chart and Firmware Chart.
 1. Open Your existing App Builder project and install external dependencies by executing below command or install it manually.
   - Angular fontawesome version 4.7.2
 
-    Installation command:  ```npm i @angular/cdk@8.2.3 ``` 
+    Installation command:  ```npm i @angular/fontawesome@4.7.2 ``` 
 
   - Angular Material version 8.2.3
 

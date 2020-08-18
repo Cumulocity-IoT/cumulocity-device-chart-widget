@@ -90,6 +90,22 @@ export class GpLibDeviceChartService {
             }
           }
       if (typeof recordValue === 'object') {
+         Object.keys(recordValue).map((key) => {
+          if (typeof recordValue[key] === 'number') {
+            dataSet[key] = dataSet[key] + recordValue[key] || recordValue[key];
+          } else {
+            if (config.value === undefined || config.value === '') {
+              dataSet[key] = dataSet[key] + 1 || 1;
+            } else {
+              dataSet[key] =
+              dataSet[key] + Number(it[config.value]) ||
+                Number(it[config.value]);
+            }
+
+          }
+
+        });
+
       } else if (recordValue !== undefined) {
         if (config.value === undefined || config.value === '') {
           dataSet[recordValue] = dataSet[recordValue] + 1 || 1;
