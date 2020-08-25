@@ -31,6 +31,10 @@ The Device chart can be used to display Alarm Chart and Firmware Chart.
 
 * Bubble Chart (Data set not ideal for this chart)
 
+## Use Case
+
+![DeviceChart](https://user-images.githubusercontent.com/67993842/91125981-99ffaa00-e6c0-11ea-80b5-32269311642f.PNG)
+
 ## Features
 
 *  **Support single device and group devices:** Based on configuration during widget configuration.
