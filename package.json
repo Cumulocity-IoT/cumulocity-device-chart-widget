@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "This is an Angular 8 widget, which is designed to display the chart based on the device specific inventory data.",
   "author": "Khushi Khanna - Software AG, Global Presales",
-  "license": "Apache 2.0",
+  "license": "Apache 2.0", 
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
