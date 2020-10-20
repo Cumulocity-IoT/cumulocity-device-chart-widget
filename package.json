@@ -1,5 +1,5 @@
 {
-  "name": "gp-lib-device-chart",
+  "name": "gp-device-chart",
   "version": "1.0.0",
   "description": "This is an Angular 8 widget, which is designed to display the chart based on the device specific inventory data.",
   "author": "Khushi Khanna - Software AG, Global Presales",
@@ -24,21 +24,22 @@
     "@angular/compiler": "~8.2.9",
     "@angular/core": "~8.2.9",
     "@angular/forms": "~8.2.9",
+    "@angular/material": "^8.2.3",
     "@angular/platform-browser": "~8.2.9",
     "@angular/platform-browser-dynamic": "~8.2.9",
     "@angular/router": "~8.2.9",
     "@angular/upgrade": "8.2.13",
     "@c8y/client": "^1006.3.0",
-    "rxjs": "~6.4.0",
-    "tslib": "^1.10.0",
-    "zone.js": "~0.9.1",
     "@c8y/ng1-modules": "1006.3.0",
     "@c8y/ngx-components": "1006.3.0",
     "@c8y/style": "1006.3.0",
     "chart.js": "^2.9.3",
+    "gp-lib-device-chart": "file:dist/gp-lib-device-chart",
     "ng2-charts": "^2.3.2",
     "ngx-bootstrap": "5.5.0",
-    "@angular/material": "^8.2.3"
+    "rxjs": "~6.4.0",
+    "tslib": "^1.10.0",
+    "zone.js": "~0.9.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.803.8",
