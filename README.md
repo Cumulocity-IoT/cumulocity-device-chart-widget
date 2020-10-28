@@ -3,17 +3,10 @@
 ##  Overview
 
 This is an Angular 8 widget, which is designed to display the chart based on the device specific inventory data.
-
-
-To deliver the expected functionality one need to set/select the following configuration parameters:
- 1. Group by(required), 
- 2. Value(Optional)
- 3. Legend (select - Top/Left)
- 4. Device/Group (select)
  
 By Default, the chart displays the count for each type of selected Managed object parameter as a group value and it also displays the value sum for the selected value parameter.
- The widget also comes with an inbuilt color picker, which helps one to customize chart/border colors.
-The Device chart can be used to display Alarm Chart and Firmware Chart.
+ 
+The widget also comes with an inbuilt color picker, which helps one to customize chart/border colors.
  The charts available include
  * Vertical Bar Chart
 
@@ -37,11 +30,11 @@ The Device chart can be used to display Alarm Chart and Firmware Chart.
 
 ## Features
 
-*  **Support single device and group devices:** Based on configuration during widget configuration.
+*  **Support single device and group devices:** Depends on Deviceid selected in widget configuration.
 *  **Supports Alarm Chart:** It displays the Alarm chart if group by is set to c8y_ActiveAlarmsStatus in configuration.
 *  **Supports Firmware Chart:** It displays the Firmware chart if group by is set to versionIssuesName in configuration.
 *  **Fetch Inner child Devices:** Fetches Inventory data for chid devices only if Fetch innerchild devices is checked in configuration.
-*  **Support multiple charts:** Based on group by field and chart type in configuration.
+*  **Support multiple charts:** Based on chart type in configuration.
 
 ## Installation
   
