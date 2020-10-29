@@ -43,11 +43,11 @@ The widget also comes with an inbuilt color picker, which helps one to customize
 *  **Cockpit Application:** Tested with Cockpit 1006.3.0 with [Patch Fix](https://www.npmjs.com/package/cumulocity-runtime-widget-loader).
   
 
-## Installation of Widget through Application UI? (Runtime widget Installation)
+## Installation of widget through Application UI? (Runtime widget Installation)
 
 * This widget support runtime deployment. Download [Runtime Binary](https://github.com/SoftwareAG/cumulocity-device-chart-widget/releases/download/1.0.1/runtime-widget.zip) and follow runtime deployment instruction from [here](https://github.com/SoftwareAG/cumulocity-runtime-widget-loader).
 
-## Installation of Widget through Appbuilder or Cockipt Deployment? (Library Widget Installation)
+## Installation of widget through Appbuilder or Cockipt Deployment? (Library Widget Installation)
   
 **Prerequisites:**
   
@@ -301,6 +301,7 @@ This chart can be used to Display Alarm Chart and Firmware Chart
 One can also select the custom chart color and Border color to beautify the chart, if not default colors will be picked.
 
 **Example**
+
 *Sample Device Managed Object: -*
 ```
 {
