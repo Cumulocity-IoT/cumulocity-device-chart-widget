@@ -1,4 +1,4 @@
-# Cumulocity Widget - Device Chart  <img width="50" margin-top="10" src="https://user-images.githubusercontent.com/67993842/97668428-f360cc80-1aa7-11eb-8801-da578bda4334.png"/>
+# Cumulocity Widget - Device Chart  <img width="35" src="https://user-images.githubusercontent.com/67993842/97668428-f360cc80-1aa7-11eb-8801-da578bda4334.png"/>
 
 
 ##  Overview
