@@ -1,5 +1,5 @@
 {
-  "name": "gp-lib-device-chart",
+  "name": "gp-device-chart",
   "version": "1.0.0",
   "description": "This is an Angular 8 widget, which is designed to display the chart based on the device specific inventory data.",
   "author": "Khushi Khanna - Software AG, Global Presales",
@@ -14,7 +14,8 @@
     "buildPatch": "cd projects/gp-lib-device-chart && npm version patch && ng build gp-lib-device-chart && cd ../../dist/gp-lib-device-chart && npm pack && move *.tgz ../",
     "buildMinor": "cd projects/gp-lib-device-chart && npm version minor && ng build gp-lib-device-chart && cd ../../dist/gp-lib-device-chart && npm pack && move *.tgz ../",
     "buildMajor": "cd projects/gp-lib-device-chart && npm version major && ng build gp-lib-device-chart && cd ../../dist/gp-lib-device-chart && npm pack && move *.tgz ../",
-    "serve": "ng build gp-lib-device-chart && npm i dist/gp-lib-device-chart && ng s"
+    "serve": "ng build gp-lib-device-chart && npm i dist/gp-lib-device-chart && ng s",
+    "runtime": "gulp --gulpfile ./runtime/gulpfile.js"
   },
   "private": true,
   "dependencies": {
@@ -23,21 +24,23 @@
     "@angular/compiler": "~8.2.9",
     "@angular/core": "~8.2.9",
     "@angular/forms": "~8.2.9",
+    "@angular/material": "^8.2.3",
     "@angular/platform-browser": "~8.2.9",
     "@angular/platform-browser-dynamic": "~8.2.9",
     "@angular/router": "~8.2.9",
     "@angular/upgrade": "8.2.13",
     "@c8y/client": "^1006.3.0",
-    "rxjs": "~6.4.0",
-    "tslib": "^1.10.0",
-    "zone.js": "~0.9.1",
     "@c8y/ng1-modules": "1006.3.0",
     "@c8y/ngx-components": "1006.3.0",
     "@c8y/style": "1006.3.0",
     "chart.js": "^2.9.3",
+    "gp-lib-device-chart": "file:dist/gp-lib-device-chart",
+    "gulp-inject-string": "^1.1.2",
     "ng2-charts": "^2.3.2",
     "ngx-bootstrap": "5.5.0",
-    "@angular/material": "^8.2.3"
+    "rxjs": "~6.4.0",
+    "tslib": "^1.10.0",
+    "zone.js": "~0.9.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.803.8",
@@ -57,11 +60,23 @@
     "karma-coverage-istanbul-reporter": "~2.0.1",
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.0",
-    "ng-packagr": "^5.4.0",
+    "ng-packagr": "^9.1.1",
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tsickle": "^0.37.0",
     "tslint": "~5.15.0",
-    "typescript": "~3.5.3"
+    "typescript": "~3.5.3",
+    "css-loader": "^3.5.3",
+    "del": "^5.1.0",
+    "delay": "^4.3.0",
+    "fs-extra": "^9.0.0",
+    "gulp": "^4.0.2",
+    "gulp-filter": "^6.0.0",
+    "gulp-replace": "^1.0.0",
+    "gulp-zip": "^5.0.1",
+    "url-loader": "^4.1.0",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-external-import": "^2.2.3"
   }
 }
