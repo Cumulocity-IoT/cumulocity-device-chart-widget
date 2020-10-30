@@ -1,4 +1,5 @@
-# Cumulocity Widget - Device Chart
+# Cumulocity Widget - Device Chart  [<img width="35" src="https://user-images.githubusercontent.com/67993842/97668428-f360cc80-1aa7-11eb-8801-da578bda4334.png"/>](https://github.com/SoftwareAG/cumulocity-device-chart-widget/releases/download/1.0.1/runtime-widget.zip)
+
 
 ##  Overview
 
