@@ -3,7 +3,7 @@
 
 ##  Overview
 
-This is an Angular 8 widget, which is designed to display the chart based on the device specific inventory data.
+This is an Angular 8 widget, which is designed to display the chart based on the device specific inventory data. Runtime Installation supported.
   
 By Default the chart displays the count based on the input in the group by field of configuration. But if the input is provided in the value field of the widget configuration it gives the value sum of the provided field from device managed object.
 
@@ -102,7 +102,7 @@ The widget also comes with an inbuilt color picker, which helps one to customize
 
       Installation command :  ```npm i chart.js@2.9.3 ``` 
 
-2. Grab the Device Chart **[Latest Release Binary](https://labcase.softwareag.com/projects/gp-device-chart/repository/revisions/master/show/releases)**
+2. Grab the Device Chart **[Latest Release Binary](https://github.com/SoftwareAG/cumulocity-device-chart-widget/releases/download/1.0.1/gp-lib-device-chart-1.1.0.tgz)**
 
 3. Install the Binary file in app builder.
 
@@ -170,7 +170,7 @@ npm run deploy
 
       Installation command :  ```npm i chart.js@2.9.3 ``` 
 
-2. Grab the Device Chart **[Latest Release Binary](https://labcase.softwareag.com/projects/gp-device-chart/repository/revisions/master/show/releases)**
+2. Grab the Device Chart **[Latest Release Binary](https://github.com/SoftwareAG/cumulocity-device-chart-widget/releases/download/1.0.1/gp-lib-device-chart-1.1.0.tgz)**
 
 3. Install the Binary file in app builder.
 
@@ -239,11 +239,11 @@ npm run deploy
 
 1. Clone the repository:
 ```
-git clone git@labcase.softwareag.com:labcase/gp-device-chart.git
+git clone https://github.com/SoftwareAG/cumulocity-device-chart-widget.git
 ```
 2. Change directory:
 
-  ```cd gp-device-chart```
+  ```cd gp-device-chart-widget```
 
 3. run npm i command to install all library files specified in source code
 
@@ -291,14 +291,19 @@ Congratulations! Device Chart is configured.
 
 1. Target Assets/Devices - deviceid/groupid of interest
 2. Group By- provide the field name from the device managed object on which you want to group 
+  For eg:-
+    * To create Alarm chart set the field to c8y_ActiveAlarmsStatus.
+    * To create firmware chart set the field to versionIssuesName.
+    * To create chart that displays the device type count set the field to type.
 3. Value(Optional) -provide the field name from the device managed object whose value sum you want display  
+  For eg. :-
+    * If you just want to display the count for each group by type then leave it empty.
+    * To display the capacity for each groupby type then set the field to capacity.
+    * To display the quantity for each groupby type then set the field to quantity.
+
 4. Chart Type - type of chart that you want to display.
 5. Legend - position of legend you want
 6. You can toggle the slider if you want the results for child devices also
-
-This chart can be used to Display Alarm Chart and Firmware Chart
-- To display Alarm Chart set Group By to c8y_ActiveAlarmsStatus
-- To display Firmware Chart set Group By to versionIssuesName
                 
 One can also select the custom chart color and Border color to beautify the chart, if not default colors will be picked.
 
@@ -307,11 +312,11 @@ One can also select the custom chart color and Border color to beautify the char
 
 ### Report a bug
 
-Create a new issue in the [Issues](https://labcase.softwareag.com/projects/gp-device-chart/issues) section of this Labcase project and assign it to *Owner Full Name*. Set the tracker to `Bug` and provide a meaningful title. Make sure to describe the bug as detailed as possible and how the bug can be reproduced.
+Create a new issue in the [Issues](https://github.com/SoftwareAG/cumulocity-device-chart-widget/issues) section of this Git project and assign it to *Owner Full Name*. Set the tracker to `Bug` and provide a meaningful title. Make sure to describe the bug as detailed as possible and how the bug can be reproduced.
 
 ### Request a feature
 
-Create a new issue in the [Issues](https://labcase.softwareag.com/projects/gp-device-chart/issues) section of this Labcase project and assign it to *Owner Full Name*. Set the tracker to `Requirement` and provide a meaningful title. Shortly describe the feature.
+Create a new issue in the [Issues]https://github.com/SoftwareAG/cumulocity-device-chart-widget/issues) section of this Git project and assign it to *Owner Full Name*. Set the tracker to `Requirement` and provide a meaningful title. Shortly describe the feature.
 
 
 ------------------------------
