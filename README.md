@@ -316,7 +316,7 @@ Create a new issue in the [Issues](https://github.com/SoftwareAG/cumulocity-devi
 
 ### Request a feature
 
-Create a new issue in the [Issues]https://github.com/SoftwareAG/cumulocity-device-chart-widget/issues) section of this Git project and assign it to *Owner Full Name*. Set the tracker to `Requirement` and provide a meaningful title. Shortly describe the feature.
+Create a new issue in the [Issues](https://github.com/SoftwareAG/cumulocity-device-chart-widget/issues) section of this Git project and assign it to *Owner Full Name*. Set the tracker to `Requirement` and provide a meaningful title. Shortly describe the feature.
 
 
 ------------------------------
