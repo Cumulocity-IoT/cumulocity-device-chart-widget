@@ -1,4 +1,4 @@
-# Cumulocity Widget - Device Chart   [<img width="35" src="https://user-images.githubusercontent.com/67993842/97668428-f360cc80-1aa7-11eb-8801-da578bda4334.png"/>](https://github.com/SoftwareAG/cumulocity-device-chart-widget/releases/download/1.0.1/runtime-widget.zip)
+# Cumulocity Widget - Device Chart   [<img width="35" src="https://user-images.githubusercontent.com/67993842/97668428-f360cc80-1aa7-11eb-8801-da578bda4334.png"/>](https://github.com/SoftwareAG/cumulocity-device-chart-widget/releases/download/1.0.1/device-chart-runtime-widget-1.0.0.zip)
 
 
 ##  Overview
@@ -47,7 +47,7 @@ The widget also comes with an inbuilt color picker, which helps one to customize
   
 ### Runtime Widget Deployment?
 
-* This widget support runtime deployment. Download [Runtime Binary](https://github.com/SoftwareAG/cumulocity-device-chart-widget/releases/download/1.0.1/runtime-widget.zip) and follow runtime deployment instruction from [here](https://github.com/SoftwareAG/cumulocity-runtime-widget-loader).
+* This widget support runtime deployment. Download [Runtime Binary](https://github.com/SoftwareAG/cumulocity-device-chart-widget/releases/download/1.0.1/device-chart-runtime-widget-1.0.0.zip) and follow runtime deployment instruction from [here](https://github.com/SoftwareAG/cumulocity-runtime-widget-loader).
 
 ### Installation of widget through Appbuilder or Cockipt Deployment?
   
