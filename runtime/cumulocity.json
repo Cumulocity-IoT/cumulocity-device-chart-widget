@@ -4,7 +4,7 @@
   "key": "device-chart-runtime-widget-application-key",
   "contentSecurityPolicy": "default-src 'self'",
   "icon": {
-    "class": "fa fa-puzzle-piece"
+    "class": "fa fa-bar-chart"
   },
   "manifest": {
     "noAppSwitcher": true

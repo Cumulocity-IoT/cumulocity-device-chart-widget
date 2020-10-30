@@ -32,7 +32,6 @@ import { ColorPickerComponent } from './color-picker/color-picker-component';
 import { ColorSliderComponent } from './color-picker/color-slider/color-slider-component';
 import { ColorPaletteComponent } from './color-picker/color-palette/color-palette-component';
 
-import '~styles/index.css';
 @NgModule({
   declarations: [GpLibDeviceChartComponent, GpDeviceChartWidgetConfig, ColorPickerComponent, ColorSliderComponent, ColorPaletteComponent],
   imports: [

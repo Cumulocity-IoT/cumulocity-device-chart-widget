@@ -1,4 +1,4 @@
-# Cumulocity Widget - Device Chart  [<img width="35" src="https://user-images.githubusercontent.com/67993842/97668428-f360cc80-1aa7-11eb-8801-da578bda4334.png"/>](https://github.com/SoftwareAG/cumulocity-device-chart-widget/releases/download/1.0.1/runtime-widget.zip)
+# Cumulocity Widget - Device Chart   [<img width="35" src="https://user-images.githubusercontent.com/67993842/97668428-f360cc80-1aa7-11eb-8801-da578bda4334.png"/>](https://github.com/SoftwareAG/cumulocity-device-chart-widget/releases/download/1.0.1/runtime-widget.zip)
 
 
 ##  Overview
@@ -37,19 +37,19 @@ The widget also comes with an inbuilt color picker, which helps one to customize
 *  **Fetch Inner child Devices:** Fetches Inventory data for chid devices only if Fetch innerchild devices is checked in configuration.
 *  **Support multiple charts:** Based on chart type in configuration.
 
-
-## Supported Cumulocity Environments:
+## Supported Cumulocity Environments:**
   
 *  **App Builder:** Tested with Cumulocity App Builder version 1.2.1.
   
 *  **Cockpit Application:** Tested with Cockpit 1006.3.0 with [Patch Fix](https://www.npmjs.com/package/cumulocity-runtime-widget-loader).
-  
 
-## Installation of widget through Application UI? (Runtime widget Installation)
+## Installation
+  
+### Runtime Widget Deployment?
 
 * This widget support runtime deployment. Download [Runtime Binary](https://github.com/SoftwareAG/cumulocity-device-chart-widget/releases/download/1.0.1/runtime-widget.zip) and follow runtime deployment instruction from [here](https://github.com/SoftwareAG/cumulocity-runtime-widget-loader).
 
-## Installation of widget through Appbuilder or Cockipt Deployment? (Library Widget Installation)
+### Installation of widget through Appbuilder or Cockipt Deployment?
   
 **Prerequisites:**
   
@@ -290,7 +290,7 @@ Congratulations! Device Chart is configured.
 ## User Guide
 
 1. Target Assets/Devices - deviceid/groupid of interest
-2. Group By- provide the field name from the device managed object on which you want to group
+2. Group By- provide the field name from the device managed object on which you want to group 
 3. Value(Optional) -provide the field name from the device managed object whose value sum you want display  
 4. Chart Type - type of chart that you want to display.
 5. Legend - position of legend you want
@@ -302,65 +302,6 @@ This chart can be used to Display Alarm Chart and Firmware Chart
                 
 One can also select the custom chart color and Border color to beautify the chart, if not default colors will be picked.
 
-**Example**
-
-*Sample Device Managed Object: -*
-```
-{
-    "additionParents": {...}
-    "childDevices": {...},
-    "childAssets": {...},
-    "creationTime": "2019-03-26T09:04:13.387Z",
-    "type": "PRO-CAT-004",
-    "lastUpdated": "2020-09-24T10:53:04.889Z",
-    "name": "Amelin SGVC 10-100",
-    "id": "4142531",
-    costOfRepair: 500,
-    "c8y_Firmware": {
-        "versionIssuesName": "Low Risk",
-        "name": "Generic Firmware v3",
-        "versionIssues": -1,
-        "version": "3.0",
-        "url": "http://firmware-repository.softwareag.com"
-    },
-    "c8y_Availability": {
-        "lastMessage": "2020-10-25T12:21:07.407Z",
-        "status": "UNAVAILABLE"
-    },
-    "c8y_ActiveAlarmsStatus": {
-        "major": 4,
-        "critical": 1,
-        "minor": 0
-    },
-    "c8y_IsDevice": {},
-}
-```
-
-eg 1: Create Alarm Chart using Device Chart
-
-Configuration -
-* Target Assets/Devices - deviceid/groupid of interest
-* Group By- c8y_ActiveAlarmsStatus
-* Value(Optional) - 
-* Chart Type - type of chart that you want to display.
-* Legend - position of legend you want
-* You can toggle the slider if you want the results for child devices also
-
-Output -
-The chart is grouped on each alarm status like Major, Minor, Critical and displays the total count for each of them.
-
-eg 2: Create chart that displays the cost of repair for each device type
-
-* Target Assets/Devices - deviceid/groupid of interest
-* Group By- type
-* Value(Optional) - costOfRepair
-* Chart Type - type of chart that you want to display.
-* Legend - position of legend you want
-* You can toggle the slider if you want the results for child devices also
-
-Output - 
-The chart is grouped on device type and displays the total cost of repiar for each device type.
-And if Value field is not populated it will display the count of each device type. 
 
 ## Troubleshooting
 
