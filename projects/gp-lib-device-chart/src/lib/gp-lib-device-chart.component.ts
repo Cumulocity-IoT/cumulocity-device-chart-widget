@@ -16,16 +16,16 @@
  * limitations under the License.
  */
 
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy, isDevMode } from '@angular/core';
 import { GpLibDeviceChartService } from './gp-lib-device-chart.service';
-import { InventoryService, Realtime } from '@c8y/ngx-components/api';
+import { InventoryService, Realtime } from '@c8y/client';
 
 @Component({
   selector: 'lib-gp-lib-device-chart',
   templateUrl: './gp-lib-device-chart.component.html',
   styleUrls: []
 })
-export class GpLibDeviceChartComponent implements OnInit , OnDestroy {
+export class GpLibDeviceChartComponent implements OnInit, OnDestroy {
   chartwidgettitle = 'Chart Widget';
   response: any;
   result: any;
@@ -38,7 +38,7 @@ export class GpLibDeviceChartComponent implements OnInit , OnDestroy {
   realtimeState = true;
   @Input() config;
 
-  constructor(private deviceChartService: GpLibDeviceChartService, public inventory: InventoryService, public realtimeService: Realtime) {}
+  constructor(private deviceChartService: GpLibDeviceChartService, public inventory: InventoryService, public realtimeService: Realtime) { }
 
   public barChartOptions = {
     scaleShowVerticalLines: false,
@@ -71,9 +71,9 @@ export class GpLibDeviceChartComponent implements OnInit , OnDestroy {
     if (device.hasOwnProperty('c8y_IsDevice')) {
       this.deviceList.push(device.id);
     } else {
-        const promises = device.childAssets.references.map(async (singleDevice) => {
+      const promises = device.childAssets.references.map(async (singleDevice) => {
         this.deviceList.push(singleDevice.managedObject.id);
-        if ( this.config.innerChild) {
+        if (this.config.innerChild) {
           const { data, res, paging } = await this.inventory.childDevicesList(singleDevice.managedObject.id);
           const innerPromises = data.map(childDevice => {
             this.deviceList.push(childDevice.id);
@@ -81,7 +81,7 @@ export class GpLibDeviceChartComponent implements OnInit , OnDestroy {
           await Promise.all(innerPromises);
         }
       });
-        await Promise.all(promises);
+      await Promise.all(promises);
     }
 
     this.deviceList.map(singleDevice => {
@@ -95,6 +95,20 @@ export class GpLibDeviceChartComponent implements OnInit , OnDestroy {
   }
 
   ngOnInit() {
+    if (isDevMode()) {
+      // // configuration for sandbox-ar.eu-latest.cumulocity.com
+      // this.config = {
+      //   "legend": "left",
+      //   "groupby": "c8y_ActiveAlarmsStatus",
+      //   "type": "bar",
+      //   "device": {
+      //     "name": "Tracking Assets",
+      //     "id": "4390938"
+      //   },
+      //   innerChild: true
+      // }
+    }
+
     if (this.config.type === 'line' || this.config.type === 'horizontalBar' || this.config.type === 'bar') {
       // tslint:disable-next-line: no-string-literal
       this.barChartOptions['scales'] = {
@@ -117,7 +131,7 @@ export class GpLibDeviceChartComponent implements OnInit , OnDestroy {
     this.createChart();
     this.handleRealtime();
   }
-/** Fetches the device data from device chart service and populates chart data */
+  /** Fetches the device data from device chart service and populates chart data */
   async createChart() {
     let changeOccured = false;
     this.result = await this.deviceChartService.getDeviceData(this.config);

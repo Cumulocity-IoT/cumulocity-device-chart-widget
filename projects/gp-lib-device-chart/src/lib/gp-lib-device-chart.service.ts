@@ -18,11 +18,12 @@
 
 
 import { Injectable } from '@angular/core';
-import { InventoryService } from '@c8y/client';
+import { IManagedObject, InventoryService } from '@c8y/client';
+import { get, has } from 'lodash-es';
 
 @Injectable()
 export class GpLibDeviceChartService {
-  constructor(public inventory: InventoryService) {}
+  constructor(public inventory: InventoryService) { }
 
   response: any;
   deviceResponse: any;
@@ -38,92 +39,106 @@ export class GpLibDeviceChartService {
     this.response = group.data;
 
     if (this.response.hasOwnProperty('c8y_IsDevice')) {
-      dataSet =  this.getGroupedData(this.response, dataSet, config);
+      dataSet = this.getGroupedData(this.response, dataSet, config);
       return dataSet;
     } else {
-    const filter: object = {
-      pageSize: 100,
-      withTotalPages: true,
-    };
+      const filter: object = {
+        pageSize: 100,
+        withTotalPages: true,
+      };
 
-    const { data, res, paging } = await this.inventory.childAssetsList(
-      config.device.id,
-      filter
-    );
-    this.response = data;
-    if (config.groupby === 'versionIssuesName') {
-      const firmwareData = await this.inventory.list({
-        type: config.inventoryType,
-      });
-      if (firmwareData.data.length > 0) {
-        this.latestFirmwareVersion = firmwareData.data[0].firmware.version;
+      const { data, res, paging } = await this.inventory.childAssetsList(
+        config.device.id,
+        filter
+      );
+      this.response = data;
+      if (config.groupby === 'versionIssuesName') {
+        const firmwareData = await this.inventory.list({
+          type: config.inventoryType,
+        });
+        if (firmwareData.data.length > 0) {
+          this.latestFirmwareVersion = firmwareData.data[0].firmware.version;
+        }
       }
-    }
-    const promises = this.response.map(async (device) => {
-      dataSet = await this.getGroupedData(device, dataSet, config);
-    });
-    await Promise.all(promises);
-    return dataSet;
+      const promises = this.response.map(async (device) => {
+        dataSet = await this.getGroupedData(device, dataSet, config);
+      });
+      await Promise.all(promises);
+      return dataSet;
     }
   }
 
   /** It calculates the count for each type of selected Managed object parameter */
   async getGroupedData(it, dataSet, config) {
-      let recordValue = it[config.groupby];
-      if (config.groupby.includes('.')) {
-        const keyNames = config.groupby.split('.');
-        recordValue = it[keyNames[0]][keyNames[1]];
-      }
-      if (config.groupby === 'versionIssuesName') {
-            let versionIssues = 0;
-            versionIssues = it.c8y_Firmware.version - this.latestFirmwareVersion;
-            if (it.c8y_Firmware && versionIssues >= 0) {
-              dataSet['No Risk'] = dataSet['No Risk'] + 1 || 1;
-            } else if (it.c8y_Firmware && versionIssues === -1) {
-              dataSet['Low Risk'] = dataSet['Low Risk'] + 1 || 1;
-            } else if (it.c8y_Firmware && versionIssues === -2) {
-              dataSet['Medium Risk'] = dataSet['Medium Risk'] + 1 || 1;
-            } else if (it.c8y_Firmware && versionIssues <= -3) {
-              dataSet['High Risk'] = dataSet['High Risk'] + 1 || 1;
-            } else {
-              dataSet['Not Available'] = dataSet['Not Available'] + 1 || 1;
-            }
-          }
-      if (typeof recordValue === 'object') {
-         Object.keys(recordValue).map((key) => {
-          if (typeof recordValue[key] === 'number') {
-            dataSet[key] = dataSet[key] + recordValue[key] || recordValue[key];
-          } else {
-            if (config.value === undefined || config.value === '') {
-              dataSet[key] = dataSet[key] + 1 || 1;
-            } else {
-              dataSet[key] =
-              dataSet[key] + Number(it[config.value]) ||
-                Number(it[config.value]);
-            }
 
-          }
+    let recordValue = get(it, config.groupby);
 
-        });
-
-      } else if (recordValue !== undefined) {
-        if (config.value === undefined || config.value === '') {
-          dataSet[recordValue] = dataSet[recordValue] + 1 || 1;
-        } else {
-          dataSet[recordValue] =
-          dataSet[recordValue] + Number(it[config.value]) ||
-            Number(it[config.value]);
-        }
-      }
-      if (config.innerChild && it.childDevices.references.length > 0) {
-        const { data, res, paging }  = await this.inventory.childDevicesList(it.id);
-        const promises =  data.map( async ( childDevice ) => {
-          dataSet =  await this.getGroupedData(childDevice, dataSet, config);
-        });
-        await Promise.all(promises);
-        return dataSet;
+    if (config.groupby === 'versionIssuesName') {
+      let versionIssues = 0;
+      versionIssues = it.c8y_Firmware.version - this.latestFirmwareVersion;
+      if (it.c8y_Firmware && versionIssues >= 0) {
+        dataSet['No Risk'] = dataSet['No Risk'] + 1 || 1;
+      } else if (it.c8y_Firmware && versionIssues === -1) {
+        dataSet['Low Risk'] = dataSet['Low Risk'] + 1 || 1;
+      } else if (it.c8y_Firmware && versionIssues === -2) {
+        dataSet['Medium Risk'] = dataSet['Medium Risk'] + 1 || 1;
+      } else if (it.c8y_Firmware && versionIssues <= -3) {
+        dataSet['High Risk'] = dataSet['High Risk'] + 1 || 1;
       } else {
-        return dataSet;
+        dataSet['Not Available'] = dataSet['Not Available'] + 1 || 1;
       }
     }
+    if (typeof recordValue === 'object') {
+      Object.keys(recordValue).map((key) => {
+        if (typeof recordValue[key] === 'number') {
+          dataSet[key] = dataSet[key] + recordValue[key] || recordValue[key];
+        } else {
+          if (config.value === undefined || config.value === '') {
+            dataSet[key] = dataSet[key] + 1 || 1;
+          } else {
+            dataSet[key] =
+              dataSet[key] + Number(it[config.value]) ||
+              Number(it[config.value]);
+          }
+
+        }
+
+      });
+
+    } else if (recordValue !== undefined) {
+      if (config.value === undefined || config.value === '') {
+        dataSet[recordValue] = dataSet[recordValue] + 1 || 1;
+      } else {
+        dataSet[recordValue] =
+          dataSet[recordValue] + Number(it[config.value]) ||
+          Number(it[config.value]);
+      }
+    }
+    if (config.innerChild) {
+      const data = await this.getChildDevices(it);
+      if (!!data) {
+        const promises = data.map(async (childDevice) => {
+          dataSet = await this.getGroupedData(childDevice, dataSet, config);
+        });
+        await Promise.all(promises);
+      }
+
+      return dataSet;
+    } else {
+      return dataSet;
+    }
+  }
+
+  private async getChildDevices(parent: IManagedObject): Promise<IManagedObject[]> {
+    if (parent.hasOwnProperty('c8y_IsAsset') && parent.childAssets.references.length > 0) {
+      return (await this.inventory.childAssetsList(parent.id)).data
+        .filter((childAsset) => childAsset.hasOwnProperty('c8y_IsDevice'));
+    }
+
+    if (parent.hasOwnProperty('c8y_IsDevice') && parent.childDevices.references.length > 0) {
+      return (await this.inventory.childDevicesList(parent.id)).data;
+    }
+
+    return undefined;
+  }
 }
