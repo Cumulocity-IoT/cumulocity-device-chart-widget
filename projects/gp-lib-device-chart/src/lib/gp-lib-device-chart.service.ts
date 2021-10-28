@@ -131,7 +131,8 @@ export class GpLibDeviceChartService {
 
   private async getChildDevices(parent: IManagedObject): Promise<IManagedObject[]> {
     if (parent.hasOwnProperty('c8y_IsAsset') && parent.childAssets.references.length > 0) {
-      return (await this.inventory.childAssetsList(parent.id)).data;
+      return (await this.inventory.childAssetsList(parent.id)).data
+        .filter((childAsset) => childAsset.hasOwnProperty('c8y_IsDevice'));
     }
 
     if (parent.hasOwnProperty('c8y_IsDevice') && parent.childDevices.references.length > 0) {
