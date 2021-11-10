@@ -34,7 +34,7 @@ export class GpLibDeviceChartComponent implements OnInit, OnDestroy {
   dataValues: [];
   deviceList = [];
   oldDataset = {};
-  realTimeDeviceSub;
+  realTimeDeviceSub: any[] = [];
   realtimeState = true;
   @Input() config;
 
@@ -86,11 +86,12 @@ export class GpLibDeviceChartComponent implements OnInit, OnDestroy {
 
     this.deviceList.map(singleDevice => {
       const deviceUrl = '/managedobjects/' + singleDevice;
-      this.realTimeDeviceSub = this.realtimeService.subscribe(deviceUrl, () => {
+      const realtimeData = this.realtimeService.subscribe(deviceUrl, () => {
         if (this.realtimeState) {
           this.createChart();
         }
       });
+      this.realTimeDeviceSub.push(realtimeData);
     });
   }
 
@@ -216,6 +217,10 @@ export class GpLibDeviceChartComponent implements OnInit, OnDestroy {
   }
   /** unsubscribes the realtime subscription subject */
   ngOnDestroy() {
-    this.realtimeService.unsubscribe(this.realTimeDeviceSub);
+
+    this.realTimeDeviceSub.forEach(realtimeElem => {
+      this.realtimeService.unsubscribe(realtimeElem);
+
+    });
   }
 }

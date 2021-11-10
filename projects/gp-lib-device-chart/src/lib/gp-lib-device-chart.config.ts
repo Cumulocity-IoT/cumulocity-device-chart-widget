@@ -32,6 +32,13 @@ export class GpDeviceChartWidgetConfig implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
+    if (this.config.innerChild === undefined) {
+
+      this.config.innerChild = false;
+
+    }
+
   }
 
 /** Opens the color picker if it is not already open */

@@ -37,7 +37,10 @@
         </select>
       </div>
       <div class="form-group">
-        <mat-slide-toggle class="example-margin" name="innerChild" [(ngModel)]="config.innerChild" ngDefaultControl>Include child devices</mat-slide-toggle>
+        <label class="c8y-switch">
+          <input type="checkbox" checked="config.innerChild" [(ngModel)]="config.innerChild" />
+          <span></span> Include child devices
+        </label>
       </div>
       <div style="display: flex;">
         <div style="flex-grow:1 ; margin-right: 5px;">
