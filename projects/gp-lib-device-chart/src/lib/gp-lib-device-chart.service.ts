@@ -75,18 +75,22 @@ export class GpLibDeviceChartService {
 
     if (config.groupby === 'versionIssuesName') {
       let versionIssues = 0;
-      versionIssues = it.c8y_Firmware.version - this.latestFirmwareVersion;
-      if (it.c8y_Firmware && versionIssues >= 0) {
-        dataSet['No Risk'] = dataSet['No Risk'] + 1 || 1;
-      } else if (it.c8y_Firmware && versionIssues === -1) {
-        dataSet['Low Risk'] = dataSet['Low Risk'] + 1 || 1;
-      } else if (it.c8y_Firmware && versionIssues === -2) {
-        dataSet['Medium Risk'] = dataSet['Medium Risk'] + 1 || 1;
-      } else if (it.c8y_Firmware && versionIssues <= -3) {
-        dataSet['High Risk'] = dataSet['High Risk'] + 1 || 1;
-      } else {
-        dataSet['Not Available'] = dataSet['Not Available'] + 1 || 1;
+      if (it.c8y_Firmware) {
+        versionIssues = it.c8y_Firmware.version - this.latestFirmwareVersion;
+        if (it.c8y_Firmware && versionIssues >= 0) {
+          dataSet['No Risk'] = dataSet['No Risk'] + 1 || 1;
+        } else if (it.c8y_Firmware && versionIssues === -1) {
+          dataSet['Low Risk'] = dataSet['Low Risk'] + 1 || 1;
+        } else if (it.c8y_Firmware && versionIssues === -2) {
+          dataSet['Medium Risk'] = dataSet['Medium Risk'] + 1 || 1;
+        } else if (it.c8y_Firmware && versionIssues <= -3) {
+          dataSet['High Risk'] = dataSet['High Risk'] + 1 || 1;
+        } else {
+          dataSet['Not Available'] = dataSet['Not Available'] + 1 || 1;
+        }
+        
       }
+     
     }
     if (typeof recordValue === 'object') {
       Object.keys(recordValue).map((key) => {
