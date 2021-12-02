@@ -43,7 +43,7 @@ export class GpLibDeviceChartService {
       return dataSet;
     } else {
       const filter: object = {
-        pageSize: 100,
+        pageSize: 2000,
         withTotalPages: true,
       };
 
