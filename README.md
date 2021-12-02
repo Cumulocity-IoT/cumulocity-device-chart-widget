@@ -1,4 +1,4 @@
-# Cumulocity Widget - Device Chart   [<img width="35" src="https://user-images.githubusercontent.com/67993842/97668428-f360cc80-1aa7-11eb-8801-da578bda4334.png"/>](https://github.com/SoftwareAG/cumulocity-device-chart-widget/releases/download/1.1.0/device-chart-runtime-widget-1.1.0.zip)
+# Cumulocity Widget - Device Chart   [<img width="35" src="https://user-images.githubusercontent.com/67993842/97668428-f360cc80-1aa7-11eb-8801-da578bda4334.png"/>](https://github.com/SoftwareAG/cumulocity-device-chart-widget/releases/download/1.1.1/device-chart-runtime-widget-1.1.1.zip)
 
 
 ##  Overview
@@ -47,7 +47,7 @@ The widget also comes with an inbuilt color picker, which helps one to customize
   
 ### Runtime Widget Deployment?
 
-* This widget support runtime deployment. Download [Runtime Binary](https://github.com/SoftwareAG/cumulocity-device-chart-widget/releases/download/1.1.0/device-chart-runtime-widget-1.1.0.zip) and follow runtime deployment instruction from [here](https://github.com/SoftwareAG/cumulocity-runtime-widget-loader).
+* This widget support runtime deployment. Download [Runtime Binary](https://github.com/SoftwareAG/cumulocity-device-chart-widget/releases/download/1.1.1/device-chart-runtime-widget-1.1.1.zip) and follow runtime deployment instruction from [here](https://github.com/SoftwareAG/cumulocity-runtime-widget-loader).
 
 ### Installation of widget through Appbuilder or Cockipt Deployment?
   
@@ -102,12 +102,12 @@ The widget also comes with an inbuilt color picker, which helps one to customize
 
       Installation command :  ```npm i chart.js@2.9.3 ``` 
 
-2. Grab the Device Chart **[Latest Release Binary](https://github.com/SoftwareAG/cumulocity-device-chart-widget/releases/download/1.0.1/gp-lib-device-chart-1.1.0.tgz)**
+2. Grab the Device Chart **[Latest Release Binary](https://github.com/SoftwareAG/cumulocity-device-chart-widget/releases/download/1.1.1/gp-lib-device-chart-1.1.1.tgz)**
 
 3. Install the Binary file in app builder.
 
 ```
-npm i <binary  file  path>/gp-lib-device-chart-1.0.0.tgz
+npm i <binary  file  path>/gp-lib-device-chart-1.1.1.tgz
 ```
 
 4. Open index.less located at /cumulocity-app-builder/ui-assets/
@@ -170,12 +170,12 @@ npm run deploy
 
       Installation command :  ```npm i chart.js@2.9.3 ``` 
 
-2. Grab the Device Chart **[Latest Release Binary](https://github.com/SoftwareAG/cumulocity-device-chart-widget/releases/download/1.1.0/gp-lib-device-chart-1.1.0.tgz)**
+2. Grab the Device Chart **[Latest Release Binary](https://github.com/SoftwareAG/cumulocity-device-chart-widget/releases/download/1.1.1/gp-lib-device-chart-1.1.1.tgz)**
 
 3. Install the Binary file in app builder.
 
 ```
-npm i <binary  file  path>/gp-lib-device-chart-1.1.0.tgz
+npm i <binary  file  path>/gp-lib-device-chart-1.1.1.tgz
 ```
 
 **Note:** If you don't find branding folder then please follow [Cumulocity Branding](https://cumulocity.com/guides/web/angular/#branding)
