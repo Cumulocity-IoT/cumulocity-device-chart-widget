@@ -24,9 +24,9 @@ import { InventoryService, BasicAuth, Client, Realtime } from '@c8y/client';
 import { CoreModule } from '@c8y/ngx-components';
 
 const auth = new BasicAuth({
-  user: 'Arti.Khare',
-  password: 'Demo2021!' ,
-  tenant: 't664142085'
+  user: '',
+  password: '' ,
+  tenant: ''
 });
 
 const client = new Client(auth, 'http://localhost:4200');
