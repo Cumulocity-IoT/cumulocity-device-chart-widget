@@ -1,7 +1,7 @@
 {
     "/": {
     "target": "" , 
-    "secure": false,
+    "secure": false, 
     "changeOrigin": true,
     "logLevel": "info"
         }
