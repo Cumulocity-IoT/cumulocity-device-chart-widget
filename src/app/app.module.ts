@@ -20,12 +20,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {GpLibDeviceChartModule} from '../../projects/gp-lib-device-chart/src/lib/gp-lib-device-chart.module';
 import { AppComponent } from './app.component';
-import { InventoryService, BasicAuth, Client } from '@c8y/client';
+import { InventoryService, BasicAuth, Client, Realtime } from '@c8y/client';
+import { CoreModule } from '@c8y/ngx-components';
 
 const auth = new BasicAuth({
-  user: '',
-  password: '' ,
-  tenant: ''
+  user: 'Arti.Khare',
+  password: 'Demo2021!' ,
+  tenant: 't664142085'
 });
 
 const client = new Client(auth, 'http://localhost:4200');
@@ -37,7 +38,8 @@ const fetchClient = client.core;
   ],
   imports: [
     BrowserModule,
-    GpLibDeviceChartModule
+    GpLibDeviceChartModule,
+    CoreModule.forRoot(),
   ],
   providers: [  {
     provide: InventoryService,
@@ -45,7 +47,8 @@ const fetchClient = client.core;
         return new InventoryService(fetchClient);
         }
 
-    }],
+    },{provide: Realtime, useValue: client.realtime}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

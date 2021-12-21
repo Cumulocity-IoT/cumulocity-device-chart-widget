@@ -21,7 +21,7 @@ import { Injectable } from '@angular/core';
 import { IManagedObject, InventoryService } from '@c8y/client';
 import { get, has } from 'lodash-es';
 
-@Injectable()
+ @Injectable()
 export class GpLibDeviceChartService {
   constructor(public inventory: InventoryService) { }
 
