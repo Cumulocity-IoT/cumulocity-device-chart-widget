@@ -47,7 +47,7 @@ The widget also comes with an inbuilt color picker, which helps one to customize
   
 ### Runtime Widget Deployment?
 
-* This widget support runtime deployment. Download [Runtime Binary](https://github.com/SoftwareAG/cumulocity-device-chart-widget/releases/download/1.1.1/device-chart-runtime-widget-1.1.1.zip) and follow runtime deployment instruction from [here](https://github.com/SoftwareAG/cumulocity-runtime-widget-loader).
+* This widget support runtime deployment. Download [Runtime Binary](https://github.com/SoftwareAG/cumulocity-device-chart-widget/releases/download/1.1.1/device-chart-runtime-widget-1.1.1.zip) and follow runtime deployment instruction.
 
 ### Installation of widget through Appbuilder or Cockipt Deployment?
   
