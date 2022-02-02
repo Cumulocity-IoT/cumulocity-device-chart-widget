@@ -98,16 +98,16 @@ export class GpLibDeviceChartComponent implements OnInit, OnDestroy {
   ngOnInit() {
     if (isDevMode()) {
       // // configuration for sandbox-ar.eu-latest.cumulocity.com
-      // this.config = {
-      //   "legend": "left",
-      //   "groupby": "c8y_ActiveAlarmsStatus",
-      //   "type": "bar",
-      //   "device": {
-      //     "name": "Tracking Assets",
-      //     "id": "4390938"
-      //   },
-      //   innerChild: true
-      // }
+       /* this.config = {
+         "legend": "left",
+         "groupby": "c8y_Hardware.model",
+         "type": "polarArea",
+         "device": {
+           "name": "Tracking Assets",
+           "id": "8742333"
+         },
+         innerChild: true
+       } */
     }
 
     if (this.config.type === 'line' || this.config.type === 'horizontalBar' || this.config.type === 'bar') {

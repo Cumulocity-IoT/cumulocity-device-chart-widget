@@ -1,7 +1,13 @@
-<mat-radio-group aria-label="Select an option" (change) ="colorType = $event.value" >
-  <mat-radio-button  checked="true" value="rgba">RGBA</mat-radio-button>
-  <mat-radio-button value="hexa">HEXA</mat-radio-button>
-</mat-radio-group>
+<div>
+  <label class="c8y-radio radio-inline" title="RGBA">
+    <input type="radio" checked="checked" value="rgba" name="c8y-group-color" (change) ="changeType($event)">
+    <span></span><span>RGBA</span>
+  </label>
+  <label class="c8y-radio radio-inline" title="HEXA">
+    <input type="radio" checked="checked" value="hexa" name="c8y-group-color" (change) ="changeType($event)">
+    <span></span><span>HEXA</span>
+  </label>
+</div>
 <div class="color-wrapper">
 
     <app-color-palette [hue]="hue" (color)="color = $event" ></app-color-palette> 
@@ -10,7 +16,7 @@
       style="margin-left:16px"
     ></app-color-slider>
     <div class = "colorPickerFooter">
-      <button class="btn btn-default" style="margin-bottom: 5px;">
+      <button class="btn btn-default" style="margin-bottom: 5px;" (click)="closeColorPicker.emit(true)">
         Cancel
       </button>
       <br>
