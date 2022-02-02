@@ -1,9 +1,9 @@
-# Cumulocity Widget - Device Chart   [<img width="35" src="https://user-images.githubusercontent.com/67993842/97668428-f360cc80-1aa7-11eb-8801-da578bda4334.png"/>](https://github.com/SoftwareAG/cumulocity-device-chart-widget/releases/download/1.1.1/device-chart-runtime-widget-1.1.1.zip)
+# Cumulocity Widget - Device Chart   [<img width="35" src="https://user-images.githubusercontent.com/67993842/97668428-f360cc80-1aa7-11eb-8801-da578bda4334.png"/>](https://github.com/SoftwareAG/cumulocity-device-chart-widget/releases/download/2.0.0/device-chart-runtime-widget-2.0.0.zip)
 
 
 ##  Overview
 
-This is an Angular 8 widget, which is designed to display the chart based on the device specific inventory data. Runtime Installation supported.
+This is an Angular widget, which is designed to display the chart based on the device specific inventory data. Runtime Installation supported.
   
 By Default the chart displays the count based on the input in the group by field of configuration. But if the input is provided in the value field of the widget configuration it gives the value sum of the provided field from device managed object.
 
@@ -25,6 +25,13 @@ The widget also comes with an inbuilt color picker, which helps one to customize
 
 * Bubble Chart (Data set not ideal for this chart)
 
+### Please choose Device Chart Widget release based on Cumuloicty/Application builder version:
+
+|APPLICATION BUILDER | CUMULOCITY | DEVICE CHART WIDGET |
+|--------------------|------------|---------------------|
+| 1.3.x              | >= 1011.x.x| 2.x.x               |
+| 1.2.x              | 1010.x.x   | 1.x.x               |  
+
 ## Use Case
 
 ![DeviceChart](https://user-images.githubusercontent.com/67993842/91125981-99ffaa00-e6c0-11ea-80b5-32269311642f.PNG)
@@ -39,15 +46,14 @@ The widget also comes with an inbuilt color picker, which helps one to customize
 
 ## Supported Cumulocity Environments:**
   
-*  **App Builder:** Tested with Cumulocity App Builder version 1.2.1.
+*  **App Builder:** Tested with Cumulocity App Builder version 1.3.0.
   
-*  **Cockpit Application:** Tested with Cockpit 1006.3.0 with [Patch Fix](https://www.npmjs.com/package/cumulocity-runtime-widget-loader).
 
 ## Installation
   
 ### Runtime Widget Deployment?
 
-* This widget support runtime deployment. Download [Runtime Binary](https://github.com/SoftwareAG/cumulocity-device-chart-widget/releases/download/1.1.1/device-chart-runtime-widget-1.1.1.zip) and follow runtime deployment instruction.
+* This widget support runtime deployment. Download [Runtime Binary](https://github.com/SoftwareAG/cumulocity-device-chart-widget/releases/download/2.0.0/device-chart-runtime-widget-2.0.0.zip) and follow runtime deployment instruction.
 
 ### Installation of widget through Appbuilder or Cockipt Deployment?
   
@@ -55,7 +61,7 @@ The widget also comes with an inbuilt color picker, which helps one to customize
   
 * Git
   
-* NodeJS (release builds are currently built with `v10.19.0`)
+* NodeJS (release builds are currently built with `v14.18.0`)
   
 * NPM (Included with NodeJS)
   
@@ -63,21 +69,9 @@ The widget also comes with an inbuilt color picker, which helps one to customize
 
 ```
 
-"@angular/cdk": "8.2.3",
-
-"@angular/material": "8.2.3",
-
 "chart.js": "^2.9.3",
 
-"core-js": "^2.6.2",
-
-"ng2-charts": "^2.3.2",
-
-"@c8y/ngx-components": "^1006.3.0",
-
-"@c8y/ng1-modules": "^1006.3.0",
-
-"@c8y/style": "^1006.3.0",
+"ng2-charts": "^2.4.3",
 
 ```
 
@@ -86,40 +80,26 @@ The widget also comes with an inbuilt color picker, which helps one to customize
 **Note:** If you are new to App Builder or not yet downloaded/clone app builder code then please follow [App builder documentation(Build Instructions)](https://github.com/SoftwareAG/cumulocity-app-builder) before proceeding further.
 
 1. Open Your existing App Builder project and install external dependencies by executing below command or install it manually.
-  - Angular fontawesome version 4.7.2
+  
+  - Ng2-charts version 2.4.3
 
-    Installation command:  ```npm i @angular/fontawesome@4.7.2 ``` 
-
-  - Angular Material version 8.2.3
-
-     Installation command: ```npm i @angular/material@8.2.3 ``` 
-
-  - Ng2-charts version 2.3.2
-
-    Installation command:  ```npm install ng2-charts@2.3.2 --save``` 
+    Installation command:  ```npm install ng2-charts@2.4.3 ``` 
 
   - Chart.js version 2.9.3
 
       Installation command :  ```npm i chart.js@2.9.3 ``` 
 
-2. Grab the Device Chart **[Latest Release Binary](https://github.com/SoftwareAG/cumulocity-device-chart-widget/releases/download/1.1.1/gp-lib-device-chart-1.1.1.tgz)**
+2. Grab the Device Chart **[Latest Release Binary](https://github.com/SoftwareAG/cumulocity-device-chart-widget/releases/download/2.0.0/gp-lib-device-chart-2.0.0.tgz)**
 
 3. Install the Binary file in app builder.
 
 ```
-npm i <binary  file  path>/gp-lib-device-chart-1.1.1.tgz
+npm i <binary  file  path>/gp-lib-device-chart-2.0.0.tgz
 ```
 
 4. Open index.less located at /cumulocity-app-builder/ui-assets/
 
-5. Update index.less file with below theme. Import at first line in file/begining of file(Please ignore this step if it already exist).
-
-```
-@import '~@angular/material/prebuilt-themes/indigo-pink.css';
-@import '~@c8y/style/main.less';
-@import '~@c8y/style/extend.less';
-```
-6. Import GpLibDeviceChartModule in app.module.ts and also place the imported Module under `@NgModule`.
+5. Import GpLibDeviceChartModule in app.module.ts and also place the imported Module under `@NgModule`.
 
 ```
 
@@ -137,7 +117,7 @@ import { GpLibDeviceChartModule } from 'gp-lib-device-chart';
 
 ```
 
-7.  Congratulation! Installation is now completed. Now you can run app builder locally or build and deploy it into your tenant.
+6.  Congratulation! Installation is now completed. Now you can run app builder locally or build and deploy it into your tenant.
   
 ```
 //Start App Builder
@@ -148,80 +128,6 @@ npm run build
 npm run deploy
 ```
 
-**Installation Steps For Cockpit:**
-
-**Note:** If you are new to Cockpit or not yet created any cockpit application then please follow [Web SDK for Angular](https://cumulocity.com/guides/web/angular/) before proceeding further.
-
-1. Open Your existing Cockpit/Cumulocity project and install external dependencies by executing below command or install it manually.
-
-  - Angular fontawesome version 4.7.2
-
-    Installation command:  ```npm i @angular/cdk@8.2.3 ``` 
-
-  - Angular Material version 8.2.3
-
-     Installation command: ```npm i @angular/material@8.2.3 ``` 
-
-  - Ng2-charts version 2.3.2
-
-    Installation command:  ```npm install ng2-charts@2.3.2 --save``` 
-
-  - Chart.js version 2.9.3
-
-      Installation command :  ```npm i chart.js@2.9.3 ``` 
-
-2. Grab the Device Chart **[Latest Release Binary](https://github.com/SoftwareAG/cumulocity-device-chart-widget/releases/download/1.1.1/gp-lib-device-chart-1.1.1.tgz)**
-
-3. Install the Binary file in app builder.
-
-```
-npm i <binary  file  path>/gp-lib-device-chart-1.1.1.tgz
-```
-
-**Note:** If you don't find branding folder then please follow [Cumulocity Branding](https://cumulocity.com/guides/web/angular/#branding)
-
-4. Open branding.less located at /cumulocity-app/branding/
-
-5. In `branding.less ` import following design templates. Import at first line/begining of file(Please ignore this step if it already exist).
-
-  ```
-
-  @import '~@angular/material/prebuilt-themes/indigo-pink.css';
-
-  @import '~font-awesome/less/font-awesome.less';
-
-  @import '~@c8y/style/main.less';
-
-  @import '~@c8y/style/extend.less';
-  ```
-6. Import GpLibDeviceChartModule in app.module.ts and also place the imported Module under `@NgModule`.
-
-  ```
-
-  import { GpLibDeviceChartModule } from 'gp-lib-device-chart';
-
-  @NgModule({
-
-    imports: [
-
-      GpLibDeviceChartModule    
-
-        ]
-
-    })
-
-  ```
-
-7.  Congratulation! Installation is now completed. Now you can run your app locally or build and deploy it into your tenant.
-  
-```
-//Start App Builder
-npm run start
-// Build App
-npm run build
-// Deploy App
-npm run deploy
-```
 
 ## Build Instructions
   
@@ -231,7 +137,7 @@ npm run deploy
   
 * Git
   
-* NodeJS (release builds are currently built with `v10.19.0`)
+* NodeJS (release builds are currently built with `v14.18.0`)
   
 * NPM (Included with NodeJS)
 
