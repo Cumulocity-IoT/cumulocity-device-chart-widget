@@ -17,16 +17,13 @@
  */
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import {MatRadioModule} from '@angular/material/radio';
+import {ColorSliderComponent} from './color-slider/color-slider-component';
+import {ColorPaletteComponent} from './color-palette/color-palette-component';
 import { ColorPickerComponent } from './color-picker-component';
-import { ColorSliderComponent } from './color-slider/color-slider-component';
-import { ColorPaletteComponent } from './color-palette/color-palette-component';
-
-
+import {MatRadioModule} from '@angular/material/radio';
 @NgModule({
-/*   imports: [CommonModule, MatRadioModule],
+  imports: [CommonModule, MatRadioModule],
   declarations: [ColorPickerComponent, ColorSliderComponent, ColorPaletteComponent],
-  exports: [ColorPickerComponent], */
+  exports: [ColorPickerComponent],
 })
 export class ColorPickerModule {}

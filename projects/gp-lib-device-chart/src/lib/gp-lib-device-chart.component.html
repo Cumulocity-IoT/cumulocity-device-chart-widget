@@ -5,8 +5,9 @@
 		<span [ngClass]="realtimeState?'c8y-pulse active' : 'c8y-pulse inactive'" ></span>
 		<span >Realtime</span>
 	  </button>
-	  <button mat-icon-button style="margin-right: 10px;color:#1776BF;" type="button" class="button" (click)="reloadData()"><span class="fa fa-refresh"></span></button>
-	  </div>
+	  <button style="color:#1776BF;margin-right: 5px;" type="button" class="btn btn-clean" (click)="reloadData()"><i c8yIcon="refresh"></i></button>
+      
+	</div>
   </div>
 <div *ngIf="dataLoaded | async"> 
 	<div style="display: block">

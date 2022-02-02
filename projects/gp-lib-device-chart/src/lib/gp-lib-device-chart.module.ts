@@ -22,12 +22,8 @@ import { GpLibDeviceChartComponent } from './gp-lib-device-chart.component';
 import { GpDeviceChartWidgetConfig } from './gp-lib-device-chart.config';
 import { CoreModule, HOOK_COMPONENTS } from '@c8y/ngx-components';
 import { ChartsModule } from 'ng2-charts';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { GpLibDeviceChartService } from './gp-lib-device-chart.service';
-import { ColorPickerModule } from './color-picker/color-picker-module';
 import * as preview from './preview-image';
-import { MatRadioModule } from '@angular/material/radio';
 import { ColorPickerComponent } from './color-picker/color-picker-component';
 import { ColorSliderComponent } from './color-picker/color-slider/color-slider-component';
 import { ColorPaletteComponent } from './color-picker/color-palette/color-palette-component';
@@ -36,10 +32,7 @@ import { ColorPaletteComponent } from './color-picker/color-palette/color-palett
   declarations: [GpLibDeviceChartComponent, GpDeviceChartWidgetConfig, ColorPickerComponent, ColorSliderComponent, ColorPaletteComponent],
   imports: [
     CoreModule,
-    ChartsModule,
-    MatButtonModule,
-    MatSlideToggleModule,
-    MatRadioModule
+    ChartsModule
   ],
   exports: [GpLibDeviceChartComponent, GpDeviceChartWidgetConfig, ColorPickerComponent],
   entryComponents: [GpLibDeviceChartComponent, GpDeviceChartWidgetConfig, ColorPickerComponent],
