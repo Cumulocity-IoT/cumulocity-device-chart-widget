@@ -1,8 +1,5 @@
 # Cumulocity Widget - Device Chart   [<img width="35" src="https://user-images.githubusercontent.com/67993842/97668428-f360cc80-1aa7-11eb-8801-da578bda4334.png"/>](https://github.com/SoftwareAG/cumulocity-device-chart-widget/releases/download/2.0.0/device-chart-runtime-widget-2.0.0.zip)
 
-
-##  Overview
-
 This is an Angular widget, which is designed to display the chart based on the device specific inventory data. Runtime Installation supported.
   
 By Default the chart displays the count based on the input in the group by field of configuration. But if the input is provided in the value field of the widget configuration it gives the value sum of the provided field from device managed object.
