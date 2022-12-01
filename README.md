@@ -41,7 +41,7 @@ The widget also comes with an inbuilt color picker, which helps one to customize
 *  **Fetch Inner child Devices:** Fetches Inventory data for chid devices only if Fetch innerchild devices is checked in configuration.
 *  **Support multiple charts:** Based on chart type in configuration.
 
-## Supported Cumulocity Environments
+## Supported Cumulocity Environments:
   
 *  **App Builder:** Tested with Cumulocity App Builder version 1.3.0.
   
