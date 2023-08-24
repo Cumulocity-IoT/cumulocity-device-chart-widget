@@ -4,6 +4,8 @@ This is an Angular widget, which is designed to display the chart based on the d
   
 By Default the chart displays the count based on the input in the group by field of configuration. But if the input is provided in the value field of the widget configuration it gives the value sum of the provided field from device managed object.
 
+> ### ⚠️ This project is no longer under development. Please use [Cumulocity Device Chart Widget Plugin](https://github.com/SoftwareAG/cumulocity-device-chart-widget-plugin) for Application Builder >=2.x.x and Cumulocity >=1016.x.x⚠️
+
 The widget also comes with an inbuilt color picker, which helps one to customize chart/border colors.
  The charts available include
  * Vertical Bar Chart
